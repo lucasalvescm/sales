@@ -7,7 +7,21 @@ from product.models import Product
 
 # Create your models here.
 
+class Client(models.Model):
+    name = models.CharField(max_length=200)
+    cellphone = models.CharField(max_length=17, blank=True)
+    email = models.CharField(max_length=100,null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
 class Order(models.Model):
     product = models.ForeignKey(Product)
+    client = models.ForeignKey(Client)
     quantity = models.IntegerField()
-    sale_price = DecimalField(max_digits=6, decimal_places=2)
+    description = models.TextField(null=True)
+    sale_price = models.DecimalField(max_digits=6, decimal_places=2)
+    delivered = models.BooleanField(default=False)
+    canceled = models.BooleanField(default=True)
+    order_date = models.DateTimeField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
