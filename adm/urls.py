@@ -18,6 +18,6 @@ from django.contrib import admin
 from adm.views import Dashboard
 
 urlpatterns = [
-    url(r'^dash/', Dashboard.as_view()),
+    url(r'^$', Dashboard.as_view(),name='dashboard'),
     
 ]

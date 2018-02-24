@@ -15,10 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
-import adm,order
+from order.views import Client, Order
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'', include('adm.urls',namespace='adm')),
-    url(r'', include('order.urls',namespace='order'))
+    url(r'^clients/', Client.as_view(),name='clients'),
+    url(r'^orders/', Order.as_view(),name='orders')
+    
 ]
