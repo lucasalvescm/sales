@@ -15,9 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
-import adm
+from adm.views import Dashboard
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'', include('adm.urls')),
+    url(r'^dash/', Dashboard.as_view()),
+    
 ]
