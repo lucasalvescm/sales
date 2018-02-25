@@ -2,10 +2,53 @@
 
 {% block content %}
 
-
-
-
-
-
+<div class="card mb-3">
+    <div class="card-header">
+      <i class="fa fa-table"></i> Lista de Vendas</div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>                   
+              <th>Data do Pedido</th>
+              <th>Cliente</th>
+              <th>Valor da Venda</th>
+              <th>Produto</th>
+              <th>Quantidade</th>
+              <th>Descrição</th>
+              <th>Data de Entrega</th>
+              <th>Entregue</th>
+              <th>Cancelado</th>
+            </tr>
+          </thead>
+        
+          <tbody>
+            {%for order in orders%}
+            <tr>
+                    <td>{{order.order_date}}</td>
+                    <td>{{order.client.name}}</td>
+                    <td>{{order.sale_price}}</td>
+                    <td>{{order.product.name}}</td>
+                    <td>{{order.quantity}}</td>
+                    <td>{{order.description}}</td>
+                    <td>{{order.delivered_date}}</td>
+                   
+                    {% if order.delivered == True %}
+                        <td align="center"><i class="fa fa-fw fa-check"></i></span></td>
+                    {% else %}
+                        <td align="center"><i class="fa fa-fw fa-minus"></i></span></td>
+                    {% endif %}
+                    {% if order.canceled == True %}
+                        <td align="center"><i class="fa fa-fw fa-close"></i></span></td>
+                    {% else %}
+                        <td align="center"><i class="fa fa-fw fa-minus"></i></span></td>
+                    {% endif %}
+            </tr>    
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
 
 {% endblock %}

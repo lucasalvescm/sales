@@ -4,26 +4,26 @@
 
 <div class="card mb-3">
     <div class="card-header">
-      <i class="fa fa-table"></i> Lista de Clientes</div>
+      <i class="fa fa-table"></i> Lista de Produtos</div>
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
-            <tr>
+            <tr>                   
               <th>Nome</th>
-              <th>Telefone</th>
-              <th>Email</th>
-              <th>Ações</th>
+              <th>Valor de Venda</th>
+              <th>Valor da Custo</th>
+              <th>Descrição</th>
             </tr>
           </thead>
         
           <tbody>
-            {%for client in clients%}
+            {%for product in products%}
             <tr>
-                <td>{{client.name}}</td>
-                <td>{{client.cellphone}}</td>
-                <td>{{client.email}}</td>
-                <td></td>
+                    <td>{{product.name}}</td>
+                    <td>R$ {{product.sale_price}}</td>
+                    <td>R$ {{product.cost_price}}</td>
+                    <td>{{product.description}}</td>
             </tr>    
             {% endfor %}
           </tbody>

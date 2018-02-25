@@ -5,6 +5,8 @@ from django.db import models
 
 from product.models import Product
 
+from datetime import datetime
+
 # Create your models here.
 
 class Client(models.Model):
@@ -14,6 +16,9 @@ class Client(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.name
+
 class Order(models.Model):
     product = models.ForeignKey(Product)
     client = models.ForeignKey(Client)
@@ -22,6 +27,10 @@ class Order(models.Model):
     sale_price = models.DecimalField(max_digits=6, decimal_places=2)
     delivered = models.BooleanField(default=False)
     canceled = models.BooleanField(default=True)
-    order_date = models.DateTimeField()
+    order_date = models.DateTimeField(default=datetime.now())
+    delivered_date = models.DateTimeField(default=datetime.now())
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return '{} - {}'.format(self.product,self.client)
