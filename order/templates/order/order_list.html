@@ -23,7 +23,7 @@
           </thead>
         
           <tbody>
-            {%for order in orders%}
+            {%for order in object_list%}
             <tr>
                     <td>{{order.order_date}}</td>
                     <td>{{order.client.name}}</td>
