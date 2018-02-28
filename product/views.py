@@ -15,5 +15,5 @@ class ProductList(ListView):
 
 class ProductCreate(CreateView):
     model = Product
-    # success_url = reverse_lazy('products')
+    success_url = reverse_lazy('product:products')
     fields = ['name', 'sale_price', 'cost_price', 'description']

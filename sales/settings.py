@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'product',
     'order',
     'adm',
-    'core'
+    'core',
+    'bootstrapform',
+    'widget_tweaks'
 ]
 
 MIDDLEWARE = [

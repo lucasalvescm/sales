@@ -7,7 +7,9 @@
       <i class="fa fa-table"></i> Lista de Produtos</div>
     <div class="card-body">
     <div class="btn-group" role="group" aria-label="Basic example">
-        <a class="btn btn-info" role="button" href="{% url 'product:product_new' %}">Novo</a>
+        <a class="btn btn-info" role="button" data-toggle="modal" data-target="#modal" href="{% url 'product:product_new' %}">Novo</a>
+        
+        
     </div>
     <hr size="30"> 
       <div class="table-responsive">
@@ -36,4 +38,24 @@
     </div>
 </div>
 
+<div class="modal fade" id="modal"></div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script>
+  $(document).ready(function () {
+    $('#modal').on('show.bs.modal', function (event) {
+        var modal = $(this)
+        $.ajax({
+            url: "{% url 'product:product_new' %}",
+            context: document.body
+        }).done(function(response) {
+            modal.html(response);
+        });
+    })
+  });
+    
+</script>
+
+
+
 {% endblock %}
+

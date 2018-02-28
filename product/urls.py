@@ -19,5 +19,5 @@ from .views import ProductList, ProductCreate
 
 urlpatterns = [
     url(r'^produtos/', ProductList.as_view(),name='products'),
-    url(r'^produtos/novo/', ProductCreate.as_view(),name='product_new'),
+    url(r'^novo$', ProductCreate.as_view(),name='product_new'),
 ]
