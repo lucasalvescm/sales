@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'adm',
     'core',
     'bootstrapform',
-    'widget_tweaks'
+    
 ]
 
 MIDDLEWARE = [
