@@ -1,15 +1,16 @@
 {% extends 'core/base.html' %}
 {% load bootstrap %}
 {% block content %}
-<div class="card mb-3">
-    <div class="card-header">
-        <i class="fa fa-table"></i> Adicionar Produto </div>
-        <div class="card-body">
-          <form method="POST" class="post-form">{% csrf_token %}
-              {{ form|bootstrap }}
-              <button type="submit" class="save btn btn-default">Save</button>
-          </form>
-        </div>
-</div>
 
-    {% endblock %}
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fa fa-table"></i> Adicionar Produto </div>
+            <div class="card-body">
+            <form method="POST" class="post-form">{% csrf_token %}
+                {{ form|bootstrap }}
+                <button type="submit" class="save btn btn-default">Salvar</button>
+            </form>
+            </div>
+    </div>
+
+{% endblock %}

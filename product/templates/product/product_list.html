@@ -1,5 +1,5 @@
 {% extends 'core/base.html' %}
-
+{% load staticfiles %}
 {% block content %}
 
 <div class="card mb-3">
@@ -7,15 +7,14 @@
       <i class="fa fa-table"></i> Lista de Produtos</div>
     <div class="card-body">
     <div class="btn-group" role="group" aria-label="Basic example">
-        <a class="btn btn-info" role="button" href="{% url 'product:product_new' %}">Novo</a>
-        
-        
+        <a class="btn btn-info" role="button" href="{% url 'product:product_new' %}">Novo Produto</a>
     </div>
     <hr size="30"> 
       <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
-            <tr>                   
+            <tr>
+              <th style="max-width:1%">Ações</th>                   
               <th>Nome</th>
               <th>Valor de Venda</th>
               <th>Valor da Custo</th>
@@ -26,6 +25,10 @@
           <tbody>
             {%for product in object_list%}
             <tr>
+                    <td>
+                        <a style="margin-right:5px" href="{% url 'product:product_update' product.pk %}"><span class="ion-edit"></span></a>
+                        <a href="{% url 'product:product_delete' product.pk %}"><span class="ion-close-round"></span></a>
+                    </td>
                     <td>{{product.name}}</td>
                     <td>R$ {{product.sale_price}}</td>
                     <td>R$ {{product.cost_price}}</td>
@@ -38,6 +41,27 @@
     </div>
 </div>
 
+{% if messages %}
+    {% for m in messages %}
+    <div id="message" style="visibility: hidden">
+      <p>{{m}}</p>
+    </div>
+    {% endfor %}
+{% endif %}
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script>
 
+  
+  $( document ).ready(function() {
+    var message = $('#message p').text();
+    if(message){
+      toastr.options.timeOut = 10000;
+      return toastr.success(message);
+    }
+    
+  });
+
+
+</script>
 {% endblock %}
 

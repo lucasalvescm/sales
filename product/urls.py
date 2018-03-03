@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
-from .views import ProductList, ProductCreate
+from .views import ProductList, ProductCreate, ProductUpdate, ProductDelete
 
 urlpatterns = [
     url(r'^produtos/', ProductList.as_view(),name='products'),
     url(r'^novo$', ProductCreate.as_view(),name='product_new'),
+    url(r'^editar/(?P<pk>\d+)$', ProductUpdate.as_view(),name='product_update'),
+    url(r'^excluir/(?P<pk>\d+)$', ProductDelete, name='product_delete'),
 ]
