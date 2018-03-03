@@ -6,7 +6,7 @@ from django.views import View
 from .models import Product
 from django.views.generic import DetailView, ListView, CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 
@@ -28,9 +28,14 @@ class ProductUpdate(SuccessMessageMixin,UpdateView):
     fields = ['name', 'sale_price', 'cost_price', 'description']
 
 class ProductDelete(View):
-    def post():
-        import ipdb; ipdb.set_trace()
-
+    def post(self,request):
+        pk = request.POST.get('pk')
+        # import ipdb; ipdb.set_trace()
+        product = Product.objects.get(pk=pk)
+        product.excluded = True
+        product.save()
+        context = {'mensagem':'Produto foi excluido'}  #  set your context
+        return render(request,context=context)
 
     
 

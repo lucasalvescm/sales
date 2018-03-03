@@ -21,5 +21,5 @@ urlpatterns = [
     url(r'^produtos/', ProductList.as_view(),name='products'),
     url(r'^novo$', ProductCreate.as_view(),name='product_new'),
     url(r'^editar/(?P<pk>\d+)$', ProductUpdate.as_view(),name='product_update'),
-    url(r'^excluir/(?P<pk>\d+)$', ProductDelete, name='product_delete'),
+    url(r'^excluir$', ProductDelete.as_view(), name='product_delete'),
 ]
