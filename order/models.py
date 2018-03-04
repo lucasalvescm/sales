@@ -10,9 +10,11 @@ from datetime import datetime
 # Create your models here.
 
 class Client(models.Model):
-    name = models.CharField(max_length=200)
-    cellphone = models.CharField(max_length=17, blank=True)
+    name = models.CharField(max_length=200, verbose_name=u"Nome")
+    cellphone = models.CharField(max_length=17, blank=True, verbose_name=u"Telefone")
     email = models.CharField(max_length=100,null=True)
+    excluded = models.BooleanField(default=False)
+    excluded_at = models.DateTimeField(auto_now_add=True,null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

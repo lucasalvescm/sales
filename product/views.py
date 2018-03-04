@@ -14,6 +14,9 @@ from django.contrib.messages.views import SuccessMessageMixin
 
 class ProductList(ListView):
     model = Product
+    def get_queryset(self):
+        queryset = Product.objects.filter(excluded=False)
+        return queryset
 
 class ProductCreate(SuccessMessageMixin,CreateView):
     model = Product
@@ -30,12 +33,11 @@ class ProductUpdate(SuccessMessageMixin,UpdateView):
 class ProductDelete(View):
     def post(self,request):
         pk = request.POST.get('pk')
-        # import ipdb; ipdb.set_trace()
         product = Product.objects.get(pk=pk)
         product.excluded = True
         product.save()
         context = {'mensagem':'Produto foi excluido'}  #  set your context
-        return render(request,context=context)
+        return HttpResponse(context)
 
     
 

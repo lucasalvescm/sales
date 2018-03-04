@@ -15,10 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
-from order.views import ClientList, OrderList
+from order.views import ClientList, OrderList, ClientCreate, ClientDelete, ClientUpdate 
 
 urlpatterns = [
     url(r'^clients/', ClientList.as_view(),name='clients'),
+    url(r'^novo$', ClientCreate.as_view(),name='client_new'),
+    url(r'^editar/(?P<pk>\d+)$', ClientUpdate.as_view(),name='client_update'),
+    url(r'^excluir$', ClientDelete.as_view(), name='client_delete'),
+
+
+    
     url(r'^orders/', OrderList.as_view(),name='orders')
     
 ]
