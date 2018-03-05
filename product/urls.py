@@ -19,7 +19,7 @@ from .views import ProductList, ProductCreate, ProductUpdate, ProductDelete
 
 urlpatterns = [
     url(r'^produtos/', ProductList.as_view(),name='products'),
-    url(r'^novo$', ProductCreate.as_view(),name='product_new'),
-    url(r'^editar/(?P<pk>\d+)$', ProductUpdate.as_view(),name='product_update'),
-    url(r'^excluir$', ProductDelete.as_view(), name='product_delete'),
+    url(r'produtos/novo$', ProductCreate.as_view(),name='product_new'),
+    url(r'produtos/editar/(?P<pk>\d+)$', ProductUpdate.as_view(),name='product_update'),
+    url(r'produtos/excluir$', ProductDelete.as_view(), name='product_delete'),
 ]
