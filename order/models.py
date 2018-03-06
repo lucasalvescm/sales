@@ -7,7 +7,7 @@ from product.models import Product
 
 from datetime import datetime
 
-from clients.models import Client
+from client.models import Client
 
 # Create your models here.
 
