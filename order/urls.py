@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
-from order.views import ClientList, OrderList, ClientCreate, ClientDelete, ClientUpdate 
+from order.views import OrderList
 
 urlpatterns = [
     # url(r'^clientes/', ClientList.as_view(),name='clients'),
