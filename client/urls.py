@@ -1,6 +1,6 @@
 from django.conf.urls import url,include
 from django.contrib import admin
-from order.views import ClientList, OrderList, ClientCreate, ClientDelete, ClientUpdate 
+from .views import ClientList, ClientCreate, ClientDelete, ClientUpdate 
 
 urlpatterns = [
     url(r'^$/', ClientList.as_view(),name='clients'),
