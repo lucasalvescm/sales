@@ -21,5 +21,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('adm.urls',namespace='adm')),
     url(r'', include('order.urls',namespace='order')),
-    url(r'', include('product.urls',namespace='product'))
+    url(r'^produtos/', include('product.urls',namespace='product'))
 ]
