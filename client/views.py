@@ -8,7 +8,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.views.generic import DetailView, ListView, CreateView, UpdateView
 from django.contrib.messages.views import SuccessMessageMixin
 
-from .models import Client, Order
+from .models import Client
 
 # Create your views here.
 
