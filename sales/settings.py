@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'order',
     'adm',
     'core',
+    'client',
     'bootstrapform',
     
 ]

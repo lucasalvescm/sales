@@ -18,10 +18,10 @@ from django.contrib import admin
 from order.views import ClientList, OrderList, ClientCreate, ClientDelete, ClientUpdate 
 
 urlpatterns = [
-    url(r'^clientes/', ClientList.as_view(),name='clients'),
-    url(r'clientes/novo$', ClientCreate.as_view(),name='client_new'),
-    url(r'clientes/editar/(?P<pk>\d+)$', ClientUpdate.as_view(),name='client_update'),
-    url(r'clientes/excluir$', ClientDelete.as_view(), name='client_delete'),
+    # url(r'^clientes/', ClientList.as_view(),name='clients'),
+    # url(r'clientes/novo$', ClientCreate.as_view(),name='client_new'),
+    # url(r'clientes/editar/(?P<pk>\d+)$', ClientUpdate.as_view(),name='client_update'),
+    # url(r'clientes/excluir$', ClientDelete.as_view(), name='client_delete'),
 
    
     url(r'^orders/', OrderList.as_view(),name='orders')
