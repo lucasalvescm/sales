@@ -15,12 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
-from order.views import OrderList
+from order.views import OrderList, OrderCreate, OrderDelete, OrderUpdate
 
 urlpatterns = [
-    url(r'^$', ClientList.as_view(),name='orders'),
-    url(r'novo$', ClientCreate.as_view(),name='order_new'),
-    url(r'editar/(?P<pk>\d+)$', ClientUpdate.as_view(),name='order_update'),
-    url(r'excluir$', ClientDelete.as_view(), name='order_delete')
+    url(r'^$', OrderList.as_view(),name='orders'),
+    url(r'novo$', OrderCreate.as_view(),name='order_new'),
+    url(r'editar/(?P<pk>\d+)$', OrderUpdate.as_view(),name='order_update'),
+    url(r'excluir$', OrderDelete.as_view(), name='order_delete')
     
 ]
