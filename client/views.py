@@ -21,13 +21,13 @@ class ClientList(ListView):
 class ClientCreate(SuccessMessageMixin,CreateView):
     model = Client
     success_message = "Cliente criado com sucesso"
-    success_url = reverse_lazy('product:products')
+    success_url = reverse_lazy('client:clients')
     fields = ['name', 'cellphone', 'email']
 
 class ClientUpdate(SuccessMessageMixin,UpdateView):
     model = Client
     success_message = "Cliente atualizado com sucesso"
-    success_url = reverse_lazy('product:products')
+    success_url = reverse_lazy('client:clients')
     fields = ['name', 'cellphone', 'email']
 
 class ClientDelete(View):

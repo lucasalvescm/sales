@@ -33,6 +33,8 @@ class Order(models.Model):
     canceled = models.BooleanField(default=True)
     order_date = models.DateTimeField(default=datetime.now())
     delivered_date = models.DateTimeField(default=datetime.now())
+    excluded = models.BooleanField(default=False)
+    excluded_at = models.DateTimeField(auto_now_add=True,null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

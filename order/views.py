@@ -8,42 +8,34 @@ from django.core.urlresolvers import reverse_lazy
 from django.views.generic import DetailView, ListView, CreateView, UpdateView
 from django.contrib.messages.views import SuccessMessageMixin
 
-from .models import Client, Order
+from .models import Order
 
 # Create your views here.
 
-
-# class ClientList(ListView):
-#     model = Client
-#     def get_queryset(self):
-#         queryset = Client.objects.filter(excluded=False)
-#         return queryset
-# class ClientCreate(SuccessMessageMixin,CreateView):
-#     model = Client
-#     success_message = "Cliente criado com sucesso"
-#     success_url = reverse_lazy('product:products')
-#     fields = ['name', 'cellphone', 'email']
-
-# class ClientUpdate(SuccessMessageMixin,UpdateView):
-#     model = Client
-#     success_message = "Cliente atualizado com sucesso"
-#     success_url = reverse_lazy('product:products')
-#     fields = ['name', 'cellphone', 'email']
-
-# class ClientDelete(View):
-#     def post(self,request):
-#         pk = request.POST.get('pk')
-#         # import ipdb; ipdb.set_trace()
-#         client = Client.objects.get(pk=pk)
-#         client.excluded = True
-#         client.save()
-#         context = {'mensagem':'Cliente foi excluido'}  #  set your context
-#         return HttpResponse(context)
-
-######## ORDER #########
 
 class OrderList(ListView):
     model = Order
     def get_queryset(self):
         queryset = Order.objects.filter(excluded=False)
         return queryset
+class OrderCreate(SuccessMessageMixin,CreateView):
+    model = Order
+    success_message = "Venda criado com sucesso"
+    success_url = reverse_lazy('order:orders')
+    fields = ['product', 'client', 'quantity', 'description', 'sale_price']
+
+class OrderUpdate(SuccessMessageMixin,UpdateView):
+    model = Order
+    success_message = "Venda atualizado com sucesso"
+    success_url = reverse_lazy('order:orders')
+    fields = ['product', 'client', 'quantity', 'description', 'sale_price']
+
+class OrderDelete(View):
+    def post(self,request):
+        pk = request.POST.get('pk')
+        # import ipdb; ipdb.set_trace()
+        order = Order.objects.get(pk=pk)
+        order.excluded = True
+        order.save()
+        context = {'mensagem':'Venda foi excluido'}  #  set your context
+        return HttpResponse(context)
