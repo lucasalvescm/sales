@@ -18,7 +18,7 @@ from django.contrib import admin
 from order.views import OrderList
 
 urlpatterns = [
-    uurl(r'^$', ClientList.as_view(),name='orders'),
+    url(r'^$', ClientList.as_view(),name='orders'),
     url(r'novo$', ClientCreate.as_view(),name='order_new'),
     url(r'editar/(?P<pk>\d+)$', ClientUpdate.as_view(),name='order_update'),
     url(r'excluir$', ClientDelete.as_view(), name='order_delete')
