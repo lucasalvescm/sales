@@ -15,12 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
-import adm,order,product,client
+import adm,order,product,client,notification
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('adm.urls',namespace='adm')),
     url(r'^vendas/', include('order.urls',namespace='order')),
     url(r'^clientes/', include('client.urls',namespace='client')),
-    url(r'^produtos/', include('product.urls',namespace='product'))
+    url(r'^produtos/', include('product.urls',namespace='product')),
+    url(r'', include('notification.urls',namespace='notification'))
 ]

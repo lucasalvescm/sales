@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'adm',
     'core',
     'client',
-    'bootstrapform',
+    'notification',
+    'bootstrapform'
     
 ]
 
