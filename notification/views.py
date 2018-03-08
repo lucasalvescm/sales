@@ -4,10 +4,13 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 
 
-def service_worker(request):
-    return render(request, 'notification/OneSignalSDKUpdaterWorker.js',
+def worker(request):
+    return render(request, 'notification/OneSignalSDKWorker.js',
                         content_type="application/x-javascript")
 
+def updater_workder(request):
+    return render(request, 'notification/OneSignalSDKUpdaterWorker.js',
+                        content_type="application/x-javascript")
 
 def manifest(request):
     
