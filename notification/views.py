@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 
 def service_worker(request):
-    return render(request, '/core/static/OneSignalSDKUpdaterWorker.js', {'foo':'bar'},
+    return render(request, 'notification/OneSignalSDKUpdaterWorker.js',
                         content_type="application/x-javascript")
 
 
