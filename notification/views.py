@@ -10,5 +10,6 @@ def service_worker(request):
 
 
 def manifest(request):
-    return render(request, 'manifest.json', {'foo':'bar'},
+    
+    return render(request, 'notification/manifest.json',
                         content_type="application/json")
