@@ -1,0 +1,8 @@
+{
+  "name": "Teste",
+  "short_name": "Teste",
+  "start_url": "/",
+  "display": "standalone",
+  "gcm_sender_id": "994605006346",
+  "gcm_user_visible_only": true
+}
