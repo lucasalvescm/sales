@@ -10,5 +10,5 @@ def service_worker(request):
 
 
 def manifest(request):
-    return render(request, '/core/static/manifest.json', {'foo':'bar'},
+    return render(request, 'core/static/manifest.json', {'foo':'bar'},
                         content_type="application/json")
