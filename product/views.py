@@ -9,10 +9,12 @@ from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 # Create your views here.
 
-class ProductList(ListView):
+class ProductList(LoginRequiredMixin,ListView):
     model = Product
     def get_queryset(self):
         queryset = Product.objects.filter(excluded=False)
