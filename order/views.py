@@ -7,30 +7,30 @@ from django.views import View
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import DetailView, ListView, CreateView, UpdateView
 from django.contrib.messages.views import SuccessMessageMixin
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Order
 
 # Create your views here.
 
 
-class OrderList(ListView):
+class OrderList(LoginRequiredMixin,ListView):
     model = Order
     def get_queryset(self):
         queryset = Order.objects.filter(excluded=False)
         return queryset
-class OrderCreate(SuccessMessageMixin,CreateView):
+class OrderCreate(LoginRequiredMixin,SuccessMessageMixin,CreateView):
     model = Order
     success_message = "Venda criado com sucesso"
     success_url = reverse_lazy('order:orders')
     fields = ['product', 'client', 'quantity', 'description', 'sale_price']
 
-class OrderUpdate(SuccessMessageMixin,UpdateView):
+class OrderUpdate(LoginRequiredMixin,SuccessMessageMixin,UpdateView):
     model = Order
     success_message = "Venda atualizado com sucesso"
     success_url = reverse_lazy('order:orders')
     fields = ['product', 'client', 'quantity', 'description', 'sale_price']
 
-class OrderDelete(View):
+class OrderDelete(LoginRequiredMixin,View):
     def post(self,request):
         pk = request.POST.get('pk')
         # import ipdb; ipdb.set_trace()

@@ -20,19 +20,19 @@ class ProductList(LoginRequiredMixin,ListView):
         queryset = Product.objects.filter(excluded=False)
         return queryset
 
-class ProductCreate(SuccessMessageMixin,CreateView):
+class ProductCreate(LoginRequiredMixin,SuccessMessageMixin,CreateView):
     model = Product
     success_message = "Produto criado com sucesso"
     success_url = reverse_lazy('product:products')
     fields = ['name', 'sale_price', 'cost_price', 'description']
 
-class ProductUpdate(SuccessMessageMixin,UpdateView):
+class ProductUpdate(LoginRequiredMixin,SuccessMessageMixin,UpdateView):
     model = Product
     success_message = "Produto atualizado com sucesso"
     success_url = reverse_lazy('product:products')
     fields = ['name', 'sale_price', 'cost_price', 'description']
 
-class ProductDelete(View):
+class ProductDelete(LoginRequiredMixin,View):
     def post(self,request):
         pk = request.POST.get('pk')
         product = Product.objects.get(pk=pk)

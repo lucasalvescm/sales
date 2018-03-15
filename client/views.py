@@ -7,30 +7,31 @@ from django.views import View
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import DetailView, ListView, CreateView, UpdateView
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Client
 
 # Create your views here.
 
 
-class ClientList(ListView):
+class ClientList(LoginRequiredMixin,ListView):
     model = Client
     def get_queryset(self):
         queryset = Client.objects.filter(excluded=False)
         return queryset
-class ClientCreate(SuccessMessageMixin,CreateView):
+class ClientCreate(LoginRequiredMixin,SuccessMessageMixin,CreateView):
     model = Client
     success_message = "Cliente criado com sucesso"
     success_url = reverse_lazy('client:clients')
     fields = ['name', 'cellphone', 'email']
 
-class ClientUpdate(SuccessMessageMixin,UpdateView):
+class ClientUpdate(LoginRequiredMixin,SuccessMessageMixin,UpdateView):
     model = Client
     success_message = "Cliente atualizado com sucesso"
     success_url = reverse_lazy('client:clients')
     fields = ['name', 'cellphone', 'email']
 
-class ClientDelete(View):
+class ClientDelete(LoginRequiredMixin,View):
     def post(self,request):
         pk = request.POST.get('pk')
         # import ipdb; ipdb.set_trace()
