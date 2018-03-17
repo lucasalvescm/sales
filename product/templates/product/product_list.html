@@ -14,25 +14,25 @@
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
-              <th style="max-width:1%">Ações</th>                   
               <th>Nome</th>
               <th>Valor de Venda</th>
               <th>Valor da Custo</th>
               <th>Descrição</th>
+              <th style="max-width:1%">Ações</th> 
             </tr>
           </thead>
         
           <tbody>
             {%for product in object_list%}
             <tr>
-                    <td>
-                        <a style="margin-right:5px" href="{% url 'product:product_update' product.pk %}"><span class="ion-edit"></span></a>
-                        <a href="#" onclick="deleteItem('{{product.pk}}')" id="btn_delete"><span class="ion-close-round"></span></a>
-                    </td>
                     <td>{{product.name}}</td>
                     <td>R$ {{product.sale_price}}</td>
                     <td>R$ {{product.cost_price}}</td>
                     <td>{{product.description}}</td>
+                    <td>
+                        <a style="margin-right:5px" href="{% url 'product:product_update' product.pk %}"><span class="ion-edit"></span></a>
+                        <a href="#" onclick="deleteItem('{{product.pk}}')" id="btn_delete"><span class="ion-close-round"></span></a>
+                    </td>
             </tr>    
             {% endfor %}
           </tbody>

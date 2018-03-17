@@ -11,7 +11,7 @@
     </div>
     <hr size="30"> 
       <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <table class="table table-bordered" id="dataTable" width="100%" style="font-size:15px" cellspacing="0">
           <thead>
             <tr>                   
               <th>Data do Pedido</th>
@@ -23,6 +23,7 @@
               <th>Data de Entrega</th>
               <th>Entregue</th>
               <th>Cancelado</th>
+              <th style="max-width:1%">Ações</th> 
             </tr>
           </thead>
         
@@ -47,6 +48,11 @@
                     {% else %}
                         <td align="center"><i class="fa fa-fw fa-minus"></i></span></td>
                     {% endif %}
+
+                    <td>
+                        <a style="margin-right:5px" href="{% url 'order:order_update' order.pk %}"><span class="ion-edit"></span></a>
+                        <a onclick="deleteItem('{{order.pk}}')" href="#" id="btn_delete"><span class="ion-close-round"></span></a>
+                    </td>
             </tr>    
             {% endfor %}
           </tbody>
@@ -80,8 +86,10 @@
     }
   });
   
-  var url ="{% url 'order:order_delete' %}"
+  
   function deleteItem(pk){
+    var url = "{% url 'order:order_delete' %}"
+    // document.location.href = url.replace('123', pk);
     $.ajax({
         url : url, // the endpoint
         type : "POST", // http method
@@ -92,14 +100,14 @@
         success : function(json) {
           localStorage.setItem("Deleted",'1')
           window.location.reload(); 
-          
-        },
+            },
         // handle a non-successful response
         error : function(xhr,errmsg,err) {
-          alert('deu ruim');
+          alert(err);
         }
-        
-    });
+        });
+    
+    
   }
 
 

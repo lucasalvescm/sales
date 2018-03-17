@@ -17,7 +17,7 @@
               <th>Nome</th>
               <th>Telefone</th>
               <th>Email</th>
-              <th>Ações</th>
+              <th style="max-width:1%">Ações</th> 
             </tr>
           </thead>
         
@@ -27,7 +27,10 @@
                 <td>{{client.name}}</td>
                 <td>{{client.cellphone}}</td>
                 <td>{{client.email}}</td>
-                <td></td>
+                <td>
+                    <a style="margin-right:5px" href="{% url 'client:client_update' client.pk %}"><span class="ion-edit"></span></a>
+                    <a href="#" onclick="deleteItem('{{client.pk}}')" id="btn_delete"><span class="ion-close-round"></span></a>
+                </td>
             </tr>    
             {% endfor %}
           </tbody>
