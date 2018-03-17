@@ -30,7 +30,7 @@
     margin-right: auto;
     width: 10%;" class="center">
     <div class="card card-login mx-auto mt-5">
-      <div class="card-header">Login</div>
+      <div class="card-header">Login | PAINEL ADMINISTRATIVO DE VENDAS</div>
       <div class="card-body">
         <!-- <form>
           <div class="form-group">
@@ -51,6 +51,7 @@
         </form> -->
         <form method="post">
           {% csrf_token %}
+          {{form.label}}
           {{ form | bootstrap }}
           <button class="btn btn-primary btn-block" type="submit">Login</button>
         </form>
