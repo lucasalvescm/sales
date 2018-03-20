@@ -32,14 +32,18 @@ class ProductUpdate(LoginRequiredMixin,SuccessMessageMixin,UpdateView):
     success_url = reverse_lazy('product:products')
     fields = ['name', 'sale_price', 'cost_price', 'description']
 
-class ProductDelete(LoginRequiredMixin,View):
-    def post(self,request):
-        pk = request.POST.get('pk')
-        product = Product.objects.get(pk=pk)
-        product.excluded = True
-        product.save()
-        context = {'mensagem':'Produto foi excluido'}  #  set your context
-        return HttpResponse(context)
+class ProductDelete(LoginRequiredMixin,DeleteView):
+    model = Product
+    success_url = reverse_lazy('product:products')
+    def get(self, *args, **kwargs):
+        return self.post(*args, **kwargs)
+    # def post(self,request):
+    #     pk = request.POST.get('pk')
+    #     product = Product.objects.get(pk=pk)
+    #     product.excluded = True
+    #     product.save()
+    #     context = {'mensagem':'Produto foi excluido'}  #  set your context
+    #     return HttpResponse(context)
 
     
 

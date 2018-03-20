@@ -21,7 +21,7 @@ urlpatterns = [
     url(r'^$', OrderList.as_view(),name='orders'),
     url(r'novo$', OrderCreate.as_view(),name='order_new'),
     url(r'editar/(?P<pk>\d+)$', OrderUpdate.as_view(),name='order_update'),
-    url(r'excluir$', OrderDelete.as_view(), name='order_delete')
+    url(r'excluir/(?P<pk>\d+)$',OrderDelete.as_view(), name='order_delete')
     # url(r'excluir$', OrderDelete.as_view(), name='order_delete')
     
 ]
