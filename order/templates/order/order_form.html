@@ -7,7 +7,12 @@
             <i class="fa fa-table"></i> Adicionar Venda </div>
             <div class="card-body">
             <form method="POST" class="post-form">{% csrf_token %}
-                {{ form|bootstrap }}
+                {% for field in form %}
+                    {{field | bootstrap}}
+                    {% if field.name == 'product' %}
+                    
+                    {% endif %}
+                {% endfor %}                
                 <button type="submit" class="save btn btn-default">Salvar</button>
             </form>
             </div>
