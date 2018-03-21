@@ -11,6 +11,8 @@ from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from .forms import ProductForm
+
 
 # Create your views here.
 
@@ -22,10 +24,10 @@ class ProductList(LoginRequiredMixin,ListView):
 
 class ProductCreate(LoginRequiredMixin,SuccessMessageMixin,CreateView):
     model = Product
+    form_class = ProductForm
     success_message = "Produto criado com sucesso"
     success_url = reverse_lazy('product:products')
-    fields = ['name', 'sale_price', 'cost_price', 'description']
-
+    
 class ProductUpdate(LoginRequiredMixin,SuccessMessageMixin,UpdateView):
     model = Product
     success_message = "Produto atualizado com sucesso"

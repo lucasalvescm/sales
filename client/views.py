@@ -10,6 +10,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Client
+from .forms import ClientForm
 
 # Create your views here.
 
@@ -21,9 +22,9 @@ class ClientList(LoginRequiredMixin,ListView):
         return queryset
 class ClientCreate(LoginRequiredMixin,SuccessMessageMixin,CreateView):
     model = Client
+    form_class = ClientForm
     success_message = "Cliente criado com sucesso"
     success_url = reverse_lazy('client:clients')
-    fields = ['name', 'cellphone', 'email']
 
 class ClientUpdate(LoginRequiredMixin,SuccessMessageMixin,UpdateView):
     model = Client

@@ -17,3 +17,4 @@ class OrderForm(forms.ModelForm):
         self.fields['quantity'].widget.attrs['style'] = 'width:20%'
         self.fields['sale_price'].widget.attrs['style'] = 'width:30%'
         self.fields['client'].widget.attrs['style'] = 'width:65%'
+        self.fields['description'].widget.attrs['style'] = 'width:65%;height:20%'
