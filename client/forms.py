@@ -12,5 +12,5 @@ class ClientForm(forms.ModelForm):
         super(ClientForm, self).__init__(*args, **kwargs)
         self.fields['name'].widget.attrs['style'] = 'width:65%'
         self.fields['cellphone'].widget.attrs['style'] = 'width:65%'
-        self.fields['email'].widget.attrs['style'] = 'width:20%'
+        self.fields['email'].widget.attrs['style'] = 'width:65%'
         

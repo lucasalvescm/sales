@@ -8,14 +8,79 @@
             <div class="card-body">
             <form method="POST" class="post-form">{% csrf_token %}
                 {% for field in form %}
-                    {{field | bootstrap}}
-                    {% if field.name == 'product' %}
                     
+                    {% if field.name == 'client' %}
+                        {{field | bootstrap}}
+                        <button class="save btn btn-default" type="button" onclick="openModal()">Criar Cliente</button>
+                        <hr>
+                    {% else %}
+                        {{field | bootstrap}}
                     {% endif %}
+
                 {% endfor %}                
-                <button type="submit" class="save btn btn-default">Salvar</button>
+                <button type="submit" class="save btn btn-primary">Salvar</button>
             </form>
             </div>
     </div>
 
+
+        <!-- Modal -->
+    <div class="modal" id="modalClient" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Criando Cliente</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form method="POST" class="post-form" id="form-client">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="control-label  " for="id_name">Nome</label>
+                    <div class=" ">
+                        <input type="text" name="name" maxlength="200" style="width:65%" class=" form-control" required="" id="id_name">
+                    </div>
+                </div>   
+
+                <div class="form-group">
+                    <label class="control-label  " for="id_cellphone">Telefone</label>
+                    <div class=" ">
+                        <input type="text" name="cellphone" maxlength="17" style="width:65%" class=" form-control" id="id_cellphone">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label  " for="id_email">Email</label>
+                    <div class=" ">
+                        <input type="text" name="email" maxlength="100" style="width:65%" class=" form-control" required="" id="id_email">
+                    </div>
+                </div>
+                    
+                <div class="modal-footer">
+                    <button type="button" onclick="formClient()" class="btn btn-primary">Salvar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                </div>
+            </form>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <script>
+        function openModal(){
+            $("#modalClient").modal()
+        }
+        function formClient(){
+            $.ajax({
+              type: "POST",
+              url: '{% url "client:client_new" %}',
+              data: $('#form-client').serialize(),
+              success: function( response ) {
+                location.reload();
+              }
+            });
+    
+        }
+    </script>
 {% endblock %}

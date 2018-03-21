@@ -28,9 +28,9 @@ class ClientCreate(LoginRequiredMixin,SuccessMessageMixin,CreateView):
 
 class ClientUpdate(LoginRequiredMixin,SuccessMessageMixin,UpdateView):
     model = Client
+    form_class = ClientForm
     success_message = "Cliente atualizado com sucesso"
     success_url = reverse_lazy('client:clients')
-    fields = ['name', 'cellphone', 'email']
 
 class ClientDelete(LoginRequiredMixin,DeleteView):
     model = Client

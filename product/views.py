@@ -30,10 +30,10 @@ class ProductCreate(LoginRequiredMixin,SuccessMessageMixin,CreateView):
     
 class ProductUpdate(LoginRequiredMixin,SuccessMessageMixin,UpdateView):
     model = Product
+    form_class = form_class = ProductForm
     success_message = "Produto atualizado com sucesso"
     success_url = reverse_lazy('product:products')
-    fields = ['name', 'sale_price', 'cost_price', 'description']
-
+    
 class ProductDelete(LoginRequiredMixin,DeleteView):
     model = Product
     success_url = reverse_lazy('product:products')

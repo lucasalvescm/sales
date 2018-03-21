@@ -27,10 +27,10 @@ class OrderCreate(LoginRequiredMixin,SuccessMessageMixin,CreateView):
     
 class OrderUpdate(LoginRequiredMixin,SuccessMessageMixin,UpdateView):
     model = Order
+    form_class = OrderForm
     success_message = "Venda atualizado com sucesso"
     success_url = reverse_lazy('order:orders')
-    fields = ['product', 'client', 'quantity', 'description', 'sale_price']
-
+    
 class OrderDelete(LoginRequiredMixin,DeleteView):
     model = Order
     success_message = "Venda excluída com sucesso"
