@@ -30,9 +30,9 @@
           <tbody>
             {%for order in object_list%}
             {% if order.delivered == True %}
-              <tr>
-            {% else %}
               <tr bgcolor="#ff6666">
+            {% else %}
+              <tr bgcolor="#00e673">
             {% endif %}
 
                     <td>{{order.order_date | date:'d-m-Y'}}</td>
@@ -44,21 +44,21 @@
                     <td>{{order.delivered_date | date:'d-m-Y'}}</td>
 
                     {% if order.delivered == True %}
-                        <td align="center"><i class="fa fa-fw fa-check"></i></span></td>
+                        <td align="center"><i class="fa fa-fw fa-check"  style="color:#000000"></i></span></td>
                     {% else %}
-                        <td align="center"><i class="fa fa-fw fa-minus"></i></span></td>
+                        <td align="center"><i class="fa fa-fw fa-minus"  style="color:#000000"></i></span></td>
                     {% endif %}
                     {% if order.canceled == True %}
-                        <td align="center"><i class="fa fa-fw fa-close"></i></span></td>
+                        <td align="center"><i class="fa fa-fw fa-close"  style="color:#000000"></i></span></td>
                     {% else %}
-                        <td align="center"><i class="fa fa-fw fa-minus"></i></span></td>
+                        <td align="center"><i class="fa fa-fw fa-minus"  style="color:#000000"></i></span></td>
                     {% endif %}
 
                     <td>
-                        <a style="margin-right:5px" href="{% url 'order:order_update' order.pk %}"><span class="ion-edit"></span></a>
+                        <a style="margin-right:5px" href="{% url 'order:order_update' order.pk %}"><span class="ion-edit" style="color:#000000"></span></a>
                         <form method="POST" id="form_delete" action="{% url 'order:order_delete' order.pk %}">
                            {% csrf_token %}
-                           <a onclick="deleteItem()" href="#" id="btn_delete"><span class="ion-close-round"></span></a>
+                           <a onclick="deleteItem()" href="#" id="btn_delete"><span class="ion-close-round" style="color:#000000"></span></a>
                         </form>
                     </td>
             </tr>
