@@ -29,7 +29,12 @@
 
           <tbody>
             {%for order in object_list%}
-            <tr>
+            {% if order.delivered == True %}
+              <tr>
+            {% else %}
+              <tr bgcolor="#ff6666">
+            {% endif %}
+
                     <td>{{order.order_date | date:'d-m-Y'}}</td>
                     <td>{{order.client.name}}</td>
                     <td>{{order.sale_price}}</td>
