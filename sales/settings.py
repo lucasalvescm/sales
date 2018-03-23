@@ -25,7 +25,7 @@ SECRET_KEY = '@pc1%i&t(4^a4_qz4y#i*ua)e6inrbs^=z!swirn)m98e!v_b9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['lucasalvessouza01.pythonanywhere.com','localhost']
+ALLOWED_HOSTS = ['painelvenda.pythonanywhere.com','localhost']
 
 
 # Application definition
