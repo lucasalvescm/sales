@@ -2,6 +2,7 @@
 
 from django import forms
 from .models import Order
+from django.conf import settings
 
 
 class OrderForm(forms.ModelForm):
@@ -23,10 +24,12 @@ class OrderForm(forms.ModelForm):
         ]
         widgets = {
             'delivered_date': forms.DateInput(
-                attrs={'class': 'datepicker', 'id': 'data_input'}
+                format=('%d/%m/%Y'),
+                attrs={'class': 'datepicker', 'id': 'data_delivered'}
             ),
             'order_date': forms.DateInput(
-                attrs={'class': 'datepicker', 'id': 'data_input'}
+                format=('%d/%m/%Y'),
+                attrs={'class': 'datepicker', 'id': 'data_order'}
             )
         }
 
@@ -39,3 +42,5 @@ class OrderForm(forms.ModelForm):
         self.fields['order_date'].widget.attrs['style'] = 'width:30%'
         self.fields['sale_price'].widget.attrs['style'] = 'width:30%'
         self.fields['description'].widget.attrs['style'] = 'width:65%;height:20%'
+        self.fields['delivered_date'].input_formats = ['%d/%m/%Y']
+        self.fields['order_date'].input_formats = ['%d/%m/%Y']
