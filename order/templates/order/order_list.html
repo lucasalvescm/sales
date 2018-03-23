@@ -9,11 +9,11 @@
     <div class="btn-group" role="group" aria-label="Basic example">
         <a class="btn btn-info" role="button" href="{% url 'order:order_new' %}">Nova Venda</a>
     </div>
-    <hr size="30"> 
+    <hr size="30">
       <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" style="font-size:15px" cellspacing="0">
           <thead>
-            <tr>                   
+            <tr>
               <th>Data do Pedido</th>
               <th>Cliente</th>
               <th>Valor da Venda</th>
@@ -23,21 +23,21 @@
               <th>Data de Entrega</th>
               <th>Entregue</th>
               <th>Cancelado</th>
-              <th style="max-width:1%">Ações</th> 
+              <th style="max-width:1%">Ações</th>
             </tr>
           </thead>
-        
+
           <tbody>
             {%for order in object_list%}
             <tr>
-                    <td>{{order.order_date}}</td>
+                    <td>{{order.order_date | date:'d-m-Y'}}</td>
                     <td>{{order.client.name}}</td>
                     <td>{{order.sale_price}}</td>
                     <td>{{order.product.name}}</td>
                     <td>{{order.quantity}}</td>
                     <td>{{order.description}}</td>
-                    <td>{{order.delivered_date}}</td>
-                   
+                    <td>{{order.delivered_date | date:'d-m-Y'}}</td>
+
                     {% if order.delivered == True %}
                         <td align="center"><i class="fa fa-fw fa-check"></i></span></td>
                     {% else %}
@@ -56,7 +56,7 @@
                            <a onclick="deleteItem()" href="#" id="btn_delete"><span class="ion-close-round"></span></a>
                         </form>
                     </td>
-            </tr>    
+            </tr>
             {% endfor %}
           </tbody>
         </table>
@@ -74,7 +74,7 @@
 <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
 <script>
 
-  
+
   $( document ).ready(function() {
     var message = $('#message p').text();
     if(message){
@@ -88,8 +88,8 @@
       return toastr.success('O item foi excluido');
     }
   });
-  
-  
+
+
   function deleteItem(pk){
       bootbox.confirm({
       message: "Você deseja realmente excluir essa venda?",
@@ -105,9 +105,9 @@
       },
       callback: function (result) {
           if(result){
-            document.getElementById('form_delete').submit();  
+            document.getElementById('form_delete').submit();
           }
-          
+
       }
       });
   }
