@@ -23,8 +23,8 @@ class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
         fields = [
-            'product', 'client', 'quantity', 'description',
-            'sale_price', 'delivered', 'canceled',
+            'product', 'client', 'quantity', 'sale_price', 'description',
+            'delivered', 'canceled',
             'delivered_date', 'order_date', 'payment_form',
             'paid_out'
         ]

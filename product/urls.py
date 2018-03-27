@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
-from .views import ProductList, ProductCreate, ProductUpdate, ProductDelete
+from .views import ProductList, ProductCreate, ProductUpdate, ProductDelete, get_price
 
 urlpatterns = [
     url(r'^$', ProductList.as_view(),name='products'),
     url(r'novo$', ProductCreate.as_view(),name='product_new'),
     url(r'editar/(?P<pk>\d+)$', ProductUpdate.as_view(),name='product_update'),
     url(r'excluir/(?P<pk>\d+)$', ProductDelete.as_view(), name='product_delete'),
+    url(r'preco-produto/$', get_price, name='get_price'),
 ]

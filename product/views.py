@@ -12,7 +12,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .forms import ProductForm
-
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -39,14 +39,14 @@ class ProductDelete(LoginRequiredMixin,DeleteView):
     success_url = reverse_lazy('product:products')
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
-    # def post(self,request):
-    #     pk = request.POST.get('pk')
-    #     product = Product.objects.get(pk=pk)
-    #     product.excluded = True
-    #     product.save()
-    #     context = {'mensagem':'Produto foi excluido'}  #  set your context
-    #     return HttpResponse(context)
 
-    
+def get_price(request):
+    # import ipdb;ipdb.set_trace()
+    id = request.POST.get('id')
+
+    product = Product.objects.get(pk=id)
+    data = {'price':product.sale_price}
+    return JsonResponse(data)
+
 
         

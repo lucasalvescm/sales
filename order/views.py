@@ -38,11 +38,4 @@ class OrderDelete(LoginRequiredMixin,DeleteView):
 
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
-    # def post(self,request):
-    #     pk = request.POST.get('pk')
-    #     # import ipdb; ipdb.set_trace()
-    #     order = Order.objects.get(pk=pk)
-    #     order.excluded = True
-    #     order.save()
-    #     context = {'mensagem':'Venda foi excluido'}  #  set your context
-    #     return HttpResponse(context)
+ 
