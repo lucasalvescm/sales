@@ -15,12 +15,17 @@ class OrderForm(forms.ModelForm):
         choices=((True, 'Sim'), (False, 'Não'))
     )
 
+    paid_out = forms.ChoiceField(
+        label='Pago?', required=False, widget=forms.CheckboxInput,
+        choices=((True, 'Sim'), (False, 'Não'))
+    )
+
     class Meta:
         model = Order
         fields = [
             'product', 'client', 'quantity', 'description',
             'sale_price', 'delivered', 'canceled',
-            'delivered_date', 'order_date'
+            'delivered_date', 'order_date', 'payment_form'
         ]
         widgets = {
             'delivered_date': forms.DateInput(
@@ -41,6 +46,7 @@ class OrderForm(forms.ModelForm):
         self.fields['delivered_date'].widget.attrs['style'] = 'width:30%'
         self.fields['order_date'].widget.attrs['style'] = 'width:30%'
         self.fields['sale_price'].widget.attrs['style'] = 'width:30%'
+        self.fields['payment_form'].widget.attrs['style'] = 'width:30%'
         self.fields['description'].widget.attrs['style'] = 'width:65%;height:20%'
         self.fields['delivered_date'].input_formats = ['%d/%m/%Y']
         self.fields['order_date'].input_formats = ['%d/%m/%Y']

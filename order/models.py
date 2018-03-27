@@ -10,6 +10,8 @@ from datetime import datetime
 
 from client.models import Client
 
+from .utils import CHOICES_PAYMENT
+
 class Order(models.Model):
     product = models.ForeignKey(Product, verbose_name=u"Produto")
     client = models.ForeignKey(Client, verbose_name=u"Cliente")
@@ -20,6 +22,8 @@ class Order(models.Model):
     canceled = models.BooleanField(default=True, blank=True, verbose_name=u"Cancelado")
     order_date = models.DateTimeField(default=timezone.now(), verbose_name=u"Data do Pedido")
     delivered_date = models.DateTimeField(default=timezone.now(), verbose_name=u"Data de Entrega")
+    payment_form = models.IntegerField(choices=CHOICES_PAYMENT, null=True, blank=True, verbose_name=u"Forma de pagamento")
+    paid_out = models.BooleanField(default=False)
     excluded = models.BooleanField(default=False)
     excluded_at = models.DateTimeField(auto_now_add=True,null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
