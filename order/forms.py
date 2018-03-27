@@ -25,7 +25,8 @@ class OrderForm(forms.ModelForm):
         fields = [
             'product', 'client', 'quantity', 'description',
             'sale_price', 'delivered', 'canceled',
-            'delivered_date', 'order_date', 'payment_form'
+            'delivered_date', 'order_date', 'payment_form',
+            'paid_out'
         ]
         widgets = {
             'delivered_date': forms.DateInput(
