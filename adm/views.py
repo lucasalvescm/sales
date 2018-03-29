@@ -24,12 +24,13 @@ class Dashboard(LoginRequiredMixin,View):
     	total_sold = 0.0
     	total_sales = len(orders)
     	for order in orders:
-    		# import ipdb;ipdb.set_trace()
     		total_sold += float(order['sale_price'])
+    	orders_not_delivered = len(orders.filter(delivered=False))
     	data = {
     		'total_sold': str(total_sold).replace('.',','),
     		'total_sales': total_sales,
     		'total_clients': len(clients),
+    		'orders_not_delivered': orders_not_delivered,
     		'start_date': start_date.strftime('%d-%m-%Y'),
     		'end_date': end_date.strftime('%d-%m-%Y')
     	}
