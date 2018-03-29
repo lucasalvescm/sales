@@ -29,9 +29,9 @@
                 <td>{{client.email}}</td>
                 <td>
                     <a style="margin-right:5px" href="{% url 'client:client_update' client.pk %}"><span class="ion-edit"></span></a>
-                    <form method="POST" id="form_delete" action="{% url 'client:client_delete' client.pk %}">
+                    <form method="POST" id="form_delete_{{client.pk}}" action="{% url 'client:client_delete' client.pk %}">
                       {% csrf_token %}
-                      <a onclick="deleteItem()" href="#" id="btn_delete"><span class="ion-close-round"></span></a>
+                      <a onclick="deleteItem({{client.pk}})" href="#" id="btn_delete"><span class="ion-close-round"></span></a>
                     </form>
                 </td>
             </tr>    
@@ -68,6 +68,7 @@
   });
   
   function deleteItem(pk){
+      var form_id = 'form_delete_'+pk;
       bootbox.confirm({
       message: "Você deseja realmente excluir esse cliente?",
       buttons: {
@@ -82,7 +83,7 @@
       },
       callback: function (result) {
           if(result){
-            document.getElementById('form_delete').submit();  
+            document.getElementById(form_id).submit(); 
           }
           
       }

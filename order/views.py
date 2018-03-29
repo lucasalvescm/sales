@@ -31,11 +31,15 @@ class OrderUpdate(LoginRequiredMixin,SuccessMessageMixin,UpdateView):
     success_message = "Venda atualizado com sucesso"
     success_url = reverse_lazy('order:orders')
     
-class OrderDelete(LoginRequiredMixin,DeleteView):
+class OrderDelete(LoginRequiredMixin,SuccessMessageMixin,DeleteView):
     model = Order
     success_message = "Venda excluída com sucesso"
     success_url = reverse_lazy('order:orders')
 
     def get(self, *args, **kwargs):
         return self.post(*args, **kwargs)
+
+    # def post(self, *args, **kwargs):
+    #     import ipdb;ipdb.set_trace()
+    #     pass
  
