@@ -12,7 +12,7 @@
       <li class="breadcrumb-item active">Dashboard</li>
     </ol>
     <!-- Icon Cards-->
-    <div class="row">
+<!--     <div class="row">
       <div class="col-xl-3 col-sm-6 mb-3">
         <div class="card text-white bg-primary o-hidden h-100">
           <div class="card-body">
@@ -77,49 +77,56 @@
           </a>
         </div>
       </div>
+    </div> -->
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card bg-success" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title" style="color:#ffffff">TOTAL VENDIDO</h5>
+            <h6 class="card-subtitle" style="color:#ffffff">{{start_date}} à {{end_date}}</h6>
+            <hr>
+            <h3 class="card-title" style="color:#ffffff">R$ {{total_sold}}</h3>
+          </div>
+        </div>
+     </div>
+
+     <div class="col-md-4">
+      <div class="card bg-primary" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title" style="color:#ffffff">TOTAL DE VENDAS</h5>
+          <h6 class="card-subtitle" style="color:#ffffff">{{start_date}} à {{end_date}}</h6>
+          <hr>
+          <h3 class="card-title" style="color:#ffffff">{{total_sales}} vendas</h3>
+        </div>
+      </div>
+     </div>
+
+     <div class="col-md-4">
+      <div class="card bg-danger" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title" style="color:#ffffff">TOTAL DE CLIENTES</h5>
+          <h6 class="card-subtitle" style="color:#ffffff">Número de clientes</h6>
+          <hr>
+          <h3 class="card-title" style="color:#ffffff">{{total_clients}} clientes</h3>
+        </div>
+      </div>
+     </div>
     </div>
+
+
+
+    <hr>
+
     <!-- Area Chart Example-->
     <div class="card mb-3">
       <div class="card-header">
-        <i class="fa fa-area-chart"></i> Area Chart Example</div>
+        <i class="fa fa-area-chart"></i>Vendas por produtos</div>
       <div class="card-body">
-        <canvas id="myAreaChart" width="100%" height="30"></canvas>
       </div>
-      <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
     </div>
-    <div class="row">
-      <div class="col-lg-8">
-        <!-- Example Bar Chart Card-->
-        <div class="card mb-3">
-          <div class="card-header">
-            <i class="fa fa-bar-chart"></i> Bar Chart Example</div>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-8 my-auto">
-                <canvas id="myBarChart" width="100" height="50"></canvas>
-              </div>
-              <div class="col-sm-4 text-center my-auto">
-                <div class="h4 mb-0 text-primary">$34,693</div>
-                <div class="small text-muted">YTD Revenue</div>
-                <hr>
-                <div class="h4 mb-0 text-warning">$18,474</div>
-                <div class="small text-muted">YTD Expenses</div>
-                <hr>
-                <div class="h4 mb-0 text-success">$16,219</div>
-                <div class="small text-muted">YTD Margin</div>
-              </div>
-            </div>
-          </div>
-          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-        </div>
+
+    
         
-        <!-- /Card Columns-->
-      </div>
-    </div>
-    <!-- Example DataTables Card-->
-    <acm class="-3555"></acm>
-      <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-    </div>
   </div> 
 
 
