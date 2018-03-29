@@ -12,7 +12,10 @@
       // Initialize the calendar.
       $('#calendar').fullCalendar({
         defaultView: 'month',
-        lang: 'pt-br'
+        lang: 'pt-br',
+        events: [
+          '{{events}}'
+        ]
         
       });
   });
