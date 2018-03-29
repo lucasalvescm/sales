@@ -1,7 +1,23 @@
 {%extends 'core/base.html'%}
-
+{% load staticfiles %}
 
 {% block content %}
+<link rel='stylesheet' type='text/css' href='{% static "fullcalendar-3.9.0/fullcalendar.css" %}' />
+<script type='text/javascript' src='{% static "fullcalendar-3.9.0/lib/moment.min.js" %}'></script>
+<script type='text/javascript' src='{% static "fullcalendar-3.9.0/fullcalendar.js" %}'></script>
+<script type='text/javascript' src='{% static "fullcalendar-3.9.0/locale/pt-br.js" %}'></script>
+
+<script type="text/javascript">
+  $(document).ready(function() { // Page is ready.
+      // Initialize the calendar.
+      $('#calendar').fullCalendar({
+        defaultView: 'month',
+        lang: 'pt-br'
+        
+      });
+  });
+  
+</script>
 
 <div class="container-fluid">
     <!-- Breadcrumbs-->
@@ -69,14 +85,15 @@
       <div class="card-header">
         <i class="fa fa-area-chart"></i>Vendas por produtos</div>
       <div class="card-body">
+          <div id="calendar"></div>
       </div>
     </div>
 
     
         
   </div> 
-
-
+  
+  
 
 
 {% endblock %}
