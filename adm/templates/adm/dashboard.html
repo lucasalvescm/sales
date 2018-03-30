@@ -10,12 +10,15 @@
 <script type="text/javascript">
   $(document).ready(function() { // Page is ready.
       // Initialize the calendar.
+      var data = '{{events}}'
+      var json = JSON.parse(data.replace(/&quot;/g,'"'));
+      console.log(json);
       $('#calendar').fullCalendar({
         defaultView: 'month',
         lang: 'pt-br',
-        events: [
-          '{{events}}'
-        ]
+        eventLimit: true, 
+    		eventLimitText: "Mais",
+        events: json
         
       });
   });

@@ -21,14 +21,20 @@ class Dashboard(LoginRequiredMixin, View):
 	def _get_values(self, *args, **kwargs):
 		start_date = datetime.datetime.now() + datetime.timedelta(-30)
 		end_date = datetime.datetime.now()
-		orders = Order.objects.filter(order_date__range=(start_date,end_date)).values('sale_price','client', 'delivered_date')
+		orders = Order.objects.filter(order_date__range=(start_date,end_date)).values('sale_price','client__name', 'delivered_date')
 		clients = Client.objects.all().values('pk')
 		total_sold = 0.0
 		total_sales = len(orders)
 		events = []
 		for order in orders:
 			total_sold += float(order['sale_price'])
-			events.append({'event': order['client'], 'start': order['delivered_date'].strftime("%Y-%m-%d")})
+			events.append(
+				{	
+					'title': order['client__name'], 
+					'start': order['delivered_date'].strftime("%Y-%m-%d"),
+					'textColor': '#ffffff'
+				}
+			)
 
 		orders_not_delivered = len(orders.filter(delivered=False))
 		data = {
