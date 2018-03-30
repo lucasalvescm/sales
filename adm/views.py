@@ -24,7 +24,8 @@ class Dashboard(LoginRequiredMixin, View):
 		end_date = datetime.datetime.now()
 		orders = Order.objects.filter(
 			order_date__range=(start_date,end_date)).values(
-				'sale_price','client__name', 'delivered_date', 'pk'
+				'sale_price','client__name', 'delivered_date', 
+				'pk', 'delivered'
 			)
 		clients = Client.objects.all().values('pk')
 		total_sold = 0.0
@@ -32,10 +33,16 @@ class Dashboard(LoginRequiredMixin, View):
 		events = []
 		for order in orders:
 			total_sold += float(order['sale_price'])
+			color = '#dc3545'
+			if order['delivered']:
+				color = '#28a745'
+
 			events.append(
 				{	
 					'title': order['client__name'], 
 					'start': order['delivered_date'].strftime("%Y-%m-%d"),
+					'backgroundColor': color,
+					'borderColor': '#ffffff',
 					'textColor': '#ffffff',
 					'url': '/vendas/editar/{}'.format(order['pk'])
 				}
