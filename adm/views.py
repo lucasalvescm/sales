@@ -9,6 +9,7 @@ from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from order.models import Order
+from order import urls
 from client.models import Client
 
 
@@ -21,7 +22,10 @@ class Dashboard(LoginRequiredMixin, View):
 	def _get_values(self, *args, **kwargs):
 		start_date = datetime.datetime.now() + datetime.timedelta(-30)
 		end_date = datetime.datetime.now()
-		orders = Order.objects.filter(order_date__range=(start_date,end_date)).values('sale_price','client__name', 'delivered_date')
+		orders = Order.objects.filter(
+			order_date__range=(start_date,end_date)).values(
+				'sale_price','client__name', 'delivered_date', 'pk'
+			)
 		clients = Client.objects.all().values('pk')
 		total_sold = 0.0
 		total_sales = len(orders)
@@ -32,7 +36,8 @@ class Dashboard(LoginRequiredMixin, View):
 				{	
 					'title': order['client__name'], 
 					'start': order['delivered_date'].strftime("%Y-%m-%d"),
-					'textColor': '#ffffff'
+					'textColor': '#ffffff',
+					'url': '/vendas/editar/{}'.format(order['pk'])
 				}
 			)
 

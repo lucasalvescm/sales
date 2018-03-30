@@ -12,15 +12,19 @@
       // Initialize the calendar.
       var data = '{{events}}'
       var json = JSON.parse(data.replace(/&quot;/g,'"'));
-      console.log(json);
       $('#calendar').fullCalendar({
         defaultView: 'month',
         lang: 'pt-br',
         eventLimit: true, 
     		eventLimitText: "Mais",
-        events: json
-        
-      });
+        events: json,
+        eventClick: function(event) {
+          if (event.url) {
+            window.open(event.url);
+            return false;
+          }
+        }        
+      });      
   });
   
 </script>
